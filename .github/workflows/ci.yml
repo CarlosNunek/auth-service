@@ -15,6 +15,11 @@ jobs:
         image: mongo:5
         ports:
           - 27017:27017
+      
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
 
 
     steps:
