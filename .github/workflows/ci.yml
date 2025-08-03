@@ -34,3 +34,4 @@ jobs:
             pytest
           else
             echo "No tests directory found, skipping pytest"
+          fi
