@@ -7,6 +7,9 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    
+    env:
+      IMAGE_TAG: ${{ github.sha }}
 
     steps:
       - name: Checkout repository
@@ -21,4 +24,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest .
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:${{ env.IMAGE_TAG }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:${{ env.IMAGE_TAG }}
