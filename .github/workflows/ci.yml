@@ -9,6 +9,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    
+    services:
+      mongo:
+      image: mongo:5
+      ports:
+        - 27017:27017
+
 
     steps:
       - name: Checkout repository
